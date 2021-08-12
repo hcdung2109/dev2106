@@ -34,4 +34,16 @@ class ShopController extends Controller
     {
         return view('frontend.order');
     }
+
+    // dANH SACH TIN Tức
+    public function article()
+    {
+        return view('frontend.article');
+    }
+
+    // chi tiết tin tức
+    public function detailArticle()
+    {
+        return view('frontend.detail-article');
+    }
 }

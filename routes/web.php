@@ -22,6 +22,13 @@ Route::get('/lien-he', 'ShopController@contact');
 
 Route::get('/dat-hang', 'ShopController@order');
 
+// Danh sách tin tức
+Route::get('/tin-tuc' , 'ShopController@article');
+
+// Chi tiết tin tức
+Route::get('/chi-tiet-tin-tuc','ShopController@detailArticle');
+
+// ------------ QUẢN TRỊ ----------------
 Route::group(['prefix' => 'admin'], function() {
     // Trang chủ - quản trị
     Route::get('/', 'AdminController@index');
@@ -30,6 +37,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::resource('user', 'UserController');
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
+    Route::resource('article', 'ArticleController');
 });
 
 
