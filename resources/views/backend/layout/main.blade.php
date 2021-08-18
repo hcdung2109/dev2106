@@ -338,12 +338,12 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li>
-                    <a href="">
+                    <a href="{{ route('admin.category.index') }}">
                         <i class="fa fa-th"></i> <span>QL Danh Mục</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ route('admin.brand.index') }}">
                         <i class="fa fa-th"></i> <span>QL Thương Hiệu</span>
                     </a>
                 </li>

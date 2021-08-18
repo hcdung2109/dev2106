@@ -29,7 +29,7 @@ Route::get('/tin-tuc' , 'ShopController@article');
 Route::get('/chi-tiet-tin-tuc','ShopController@detailArticle');
 
 // ------------ QUẢN TRỊ ----------------
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin','as' => 'admin.'], function() {
     // Trang chủ - quản trị
     Route::get('/', 'AdminController@index');
 
