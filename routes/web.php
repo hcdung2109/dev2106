@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
     Route::resource('article', 'ArticleController');
+    Route::resource('brand', 'BrandController');
 });
 
 

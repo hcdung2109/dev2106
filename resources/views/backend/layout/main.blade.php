@@ -344,6 +344,11 @@
                 </li>
                 <li>
                     <a href="">
+                        <i class="fa fa-th"></i> <span>QL Thương Hiệu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
                         <i class="fa fa-th"></i> <span>QL Sản Phẩm</span>
                     </a>
                 </li>
