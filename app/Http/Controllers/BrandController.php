@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -34,7 +35,20 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // lấy toàn bộ tham số gửi từ form
+        $params = $request->all(); // $_POST , $_GET
+
+        // INSERT thêm vào CSDL
+        $model = new Brand(); // model brand sử dụng cơ chế ORM => tự động mapping vs table brand
+        $model->name = $params['name'];
+        $model->slug = str_slug($params['name']); // đồng hồ =>  dong-ho
+        $model->website = $params['website'];
+        $model->position = $params['position'];
+        $model->is_active = isset($params['is_active']) ? $params['is_active'] : 0;
+        $model->save(); // insert mysql : INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')
+
+        // chuyển hướng đến trang
+        return redirect()->route('admin.brand.index');
     }
 
     /**

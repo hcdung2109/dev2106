@@ -25,31 +25,32 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form">
+                    <form role="form" method="post" action="{{ route('admin.brand.store') }}">
+                        @csrf
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập Tên Thương hiệu">
+                                <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập Tên Thương hiệu">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputFile">Logo</label>
-                                <input type="file" id="exampleInputFile">
+                                <input name="image" type="file" id="exampleInputFile">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Website công ty</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên website">
+                                <input name="website" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên website">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Vị trí</label>
-                                <input type="number" class="form-control" id="exampleInputEmail1" min="1" value="1">
+                                <input name="position" type="number" class="form-control" id="exampleInputEmail1" min="1" value="1">
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="is_active"> Hiển thị
+                                    <input type="checkbox" name="is_active" value="1"> Hiển thị
                                 </label>
                             </div>
                         </div>
