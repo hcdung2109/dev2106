@@ -4,7 +4,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Thêm Thương Hiệu <a href="{{ route('admin.brand.index') }}" class="btn btn-success">Danh Sách</a>
+            Cập Nhật Thương Hiệu <a href="{{ route('admin.brand.index') }}" class="btn btn-success">Danh Sách</a>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -25,12 +25,13 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" method="post" action="{{ route('admin.brand.store') }}">
+                    <form role="form" method="post" action="{{ route('admin.brand.update', ['id' => $data->id]) }}">
                         @csrf
+                        @method('PUT')
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên</label>
-                                <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập Tên Thương hiệu">
+                                <input value="{{ $data->name }}" name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập Tên Thương hiệu">
                             </div>
 
                             <div class="form-group">
@@ -40,24 +41,24 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Website công ty</label>
-                                <input name="website" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên website">
+                                <input value="{{ $data->website }}" name="website" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên website">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Vị trí</label>
-                                <input name="position" type="number" class="form-control" id="exampleInputEmail1" min="1" value="1">
+                                <input value="{{ $data->position }}" name="position" type="number" class="form-control" id="exampleInputEmail1" min="1" value="1">
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="is_active" value="1"> Hiển thị
+                                    <input {{ $data->is_active == 1 ? 'checked' : '' }} type="checkbox" name="is_active" value="1"> Hiển thị
                                 </label>
                             </div>
                         </div>
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Tạo</button>
+                            <button type="submit" class="btn btn-primary">Sửa</button>
                         </div>
                     </form>
                 </div>

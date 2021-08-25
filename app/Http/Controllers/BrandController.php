@@ -14,7 +14,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('backend.brand.index');
+        $data = Brand::all(); // SELECT * FROM brands
+        return view('backend.brand.index', ['data' => $data]);
     }
 
     /**
@@ -70,7 +71,10 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        // lấy chi tiết
+        $data = Brand::find($id); // SELECT * FROM brands WHERE id  = 5
+
+        return view('backend.brand.edit', ['data' => $data] );
     }
 
     /**
@@ -82,7 +86,19 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // lấy toàn bộ tham số gửi từ form
+        $params = $request->all(); // $_POST , $_GET
+
+        $model = Brand::find($id);
+        $model->name = $params['name'];
+        $model->slug = str_slug($params['name']); // đồng hồ =>  dong-ho
+        $model->website = $params['website'];
+        $model->position = $params['position'];
+        $model->is_active = isset($params['is_active']) ? $params['is_active'] : 0;
+        $model->save(); // insert mysql : UPDATE
+
+        // chuyển hướng đến trang
+        return redirect()->route('admin.brand.index');
     }
 
     /**
