@@ -48,7 +48,9 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $row->name }}</td>
-                                    <td>ảnh</td>
+                                    <td>
+                                        <img width="80" src="{{ asset($row->image) }}" alt="">
+                                    </td>
                                     <td>{{ $row->website }}</td>
                                     <td>{{ $row->position }}</td>
                                     <td>{{ $row->is_active }}</td>
