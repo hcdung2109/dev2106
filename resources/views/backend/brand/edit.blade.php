@@ -25,7 +25,7 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" method="post" action="{{ route('admin.brand.update', ['id' => $data->id]) }}">
+                    <form enctype="multipart/form-data" role="form" method="post" action="{{ route('admin.brand.update', ['id' => $data->id]) }}">
                         @csrf
                         @method('PUT')
                         <div class="box-body">
@@ -37,6 +37,7 @@
                             <div class="form-group">
                                 <label for="exampleInputFile">Logo</label>
                                 <input name="image" type="file" id="exampleInputFile">
+                                <img style="margin-top: 15px; max-width: 200px;" src="{{ asset($data->image) }}" alt="">
                             </div>
 
                             <div class="form-group">

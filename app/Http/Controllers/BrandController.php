@@ -110,7 +110,21 @@ class BrandController extends Controller
         $model->website = $params['website'];
         $model->position = $params['position'];
         $model->is_active = isset($params['is_active']) ? $params['is_active'] : 0;
-        $model->save(); // insert mysql : UPDATE
+        // xử lý lưu ảnh
+        if ($request->hasFile('image')) { // kiểm tra xem có file gửi lên không
+            // get file được gửi lên
+            $file = $request->file('image');
+            // đặt lại tên cho file
+            $filename = $file->getClientOriginalName();  // $file->getClientOriginalName() = lấy tên gốc của file
+            // duong dan upload
+            $path_upload = 'uploads/';
+            // upload file
+            $file->move($path_upload,$filename);
+            // lưu lại đường dẫn ảnh upload
+            $model->image = $path_upload.$filename;
+        }
+
+        $model->save(); // lưu mysql : UPDATE
 
         // chuyển hướng đến trang
         return redirect()->route('admin.brand.index');
