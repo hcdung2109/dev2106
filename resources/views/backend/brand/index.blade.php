@@ -57,7 +57,12 @@
                                     <td>{{ $row->created_at }}</td>
                                     <td>
                                         <a href="{{ route('admin.brand.edit' , ['id' => $row->id ]) }}" class="btn btn-primary">Sửa</a>
-                                        <button type="button" class="btn btn-danger">Xóa</button>
+
+                                        <form action="{{ route('admin.brand.destroy', ['id' => $row->id ]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

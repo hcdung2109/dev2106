@@ -138,6 +138,9 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Brand::destroy($id); // DELETE FROM brands WHERE id=15
+
+        // chuyển hướng đến trang
+        return redirect()->route('admin.brand.index');
     }
 }
