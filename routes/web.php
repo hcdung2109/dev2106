@@ -28,8 +28,18 @@ Route::get('/tin-tuc' , 'ShopController@article');
 // Chi tiết tin tức
 Route::get('/chi-tiet-tin-tuc','ShopController@detailArticle');
 
+// Đăng nhập
+Route::get('/admin/login', 'AdminController@login')->name('admin.login');
+Route::post('/admin/postLogin', 'AdminController@postLogin')->name('admin.postLogin');
+
+// Đăng xuất
+Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
+
+
+
+
 // ------------ QUẢN TRỊ ----------------
-Route::group(['prefix' => 'admin','as' => 'admin.'], function() {
+Route::group(['prefix' => 'admin','as' => 'admin.', 'middleware' => 'checkLogin'], function() {
     // Trang chủ - quản trị
     Route::get('/', 'AdminController@index');
 
