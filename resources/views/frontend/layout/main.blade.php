@@ -148,7 +148,7 @@
                             <li><a href="/frontend/wishlist.html">Wishlist</a></li>
                             <li><a href="/frontend/my-account.html">My Account</a></li>
                             <li><a href="/frontend/cart.html">My Cart</a></li>
-                            <li><a href="/frontend/registration.html">Sign in</a></li>
+                            <li><a href="{{ route('shop.contact') }}">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -9,30 +9,13 @@
                 <div class="slider-area">
                     <div id="wrapper">
                         <div class="slider-wrapper">
+
                             <div id="mainSlider" class="nivoSlider">
-                                <img src="/frontend/img/slider/2.jpg" alt="main slider" title="#htmlcaption"/>
-                                <img src="/frontend/img/slider/1.jpg" alt="main slider" title="#htmlcaption2"/>
+                                @foreach($banners as $banner)
+                                    <img src="{{ asset($banner->image) }}" alt="main slider" title="#htmlcaption"/>
+                                @endforeach
                             </div>
-                            <div id="htmlcaption" class="nivo-html-caption slider-caption">
-                                <div class="slider-progress"></div>
-                                <div class="slider-cap-text slider-text1">
-                                    <div class="d-table-cell">
-                                        <h2 class="animated bounceInDown">BEST THEMES</h2>
-                                        <p class="animated bounceInUp">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod ut laoreet dolore magna aliquam erat volutpat.</p>
-                                        <a class="wow zoomInDown" data-wow-duration="1s" data-wow-delay="1s" href="/frontend/#">Read More <i class="fa fa-caret-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="htmlcaption2" class="nivo-html-caption slider-caption">
-                                <div class="slider-progress"></div>
-                                <div class="slider-cap-text slider-text2">
-                                    <div class="d-table-cell">
-                                        <h2 class="animated bounceInDown">BEST THEMES</h2>
-                                        <p class="animated bounceInUp">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod ut laoreet dolore magna aliquam erat volutpat.</p>
-                                        <a class="wow zoomInDown" data-wow-duration="1s" data-wow-delay="1s" href="/frontend/#">Read More <i class="fa fa-caret-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -40,7 +23,7 @@
             <!-- SLIDER-AREA END -->
             <!-- SLIDER-RIGHT START -->
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="slider-right zoom-img m-top">
+                <div class="slider-right zoom-img m-top" style="height: 307px;">
                     <a href="/frontend/#"><img class="img-responsive" src="/frontend/img/product/cms11.jpg" alt="sidebar left" /></a>
                 </div>
             </div>
