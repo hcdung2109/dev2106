@@ -23,7 +23,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="thumbnail_1">
                             <div class="single-product-image">
-                                <img src="/frontend/img/product/sale/1.jpg" alt="single-product-image" />
+                                <img src="{{ asset($product->image) }}" alt="single-product-image" />
                                 <a class="new-mark-box" href="/frontend/#">new</a>
                                 <a class="fancybox" href="/frontend/img/product/sale/1.jpg" data-fancybox-group="gallery"><span class="btn large-btn">View larger <i class="fa fa-search-plus"></i></span></a>
                             </div>
@@ -91,48 +91,19 @@
             </div>
             <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12">
                 <div class="single-product-descirption">
-                    <h2>Faded Short Sleeves T-shirt</h2>
-                    <div class="single-product-social-share">
-                        <ul>
-                            <li><a href="/frontend/#" class="twi-link"><i class="fa fa-twitter"></i>Tweet</a></li>
-                            <li><a href="/frontend/#" class="fb-link"><i class="fa fa-facebook"></i>Share</a></li>
-                            <li><a href="/frontend/#" class="g-plus-link"><i class="fa fa-google-plus"></i>Google+</a></li>
-                            <li><a href="/frontend/#" class="pin-link"><i class="fa fa-pinterest"></i>Pinterest</a></li>
-                        </ul>
-                    </div>
-                    <div class="single-product-review-box">
-                        <div class="rating-box">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-empty"></i>
-                        </div>
-                        <div class="read-reviews">
-                            <a href="/frontend/#">Read reviews (1)</a>
-                        </div>
-                        <div class="write-review">
-                            <a href="/frontend/#">Write a review</a>
-                        </div>
-                    </div>
-                    <div class="single-product-condition">
-                        <p>Reference: <span>demo_1</span></p>
-                        <p>Condition: <span>New product</span></p>
-                    </div>
+                    <h2>{{ $product->name }}</h2>
                     <div class="single-product-price">
-                        <h2>$16.51</h2>
+                        <h2>{{ number_format($product->sale,0,",",".") }} ₫ </h2>
                     </div>
+
+                    @if($product->stock > 0)
                     <div class="single-product-desc">
-                        <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
                         <div class="product-in-stock">
-                            <p>300 Items<span>In stock</span></p>
+                            <p><span>Còn hàng</span></p>
                         </div>
                     </div>
-                    <div class="single-product-info">
-                        <a href="/frontend/#"><i class="fa fa-envelope"></i></a>
-                        <a href="/frontend/#"><i class="fa fa-print"></i></a>
-                        <a href="/frontend/#"><i class="fa fa-heart"></i></a>
-                    </div>
+                    @endif
+
                     <div class="single-product-quantity">
                         <p class="small-title">Quantity</p>
                         <div class="cart-quantity">
@@ -167,64 +138,13 @@
                 <div class="product-more-info-tab">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs more-info-tab">
-                        <li class="active"><a href="/frontend/#moreinfo" data-toggle="tab">more info</a></li>
-                        <li><a href="/frontend/#datasheet" data-toggle="tab">data sheet</a></li>
-                        <li><a href="/frontend/#review" data-toggle="tab">reviews</a></li>
+                        <li class="active"><a href="/frontend/#moreinfo" data-toggle="tab">Thông số kỹ thuật</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="moreinfo">
                             <div class="tab-description">
-                                <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="datasheet">
-                            <div class="deta-sheet">
-                                <table class="table-data-sheet">
-                                    <tbody>
-                                    <tr class="odd">
-                                        <td>Compositions</td>
-                                        <td>Cotton</td>
-                                    </tr>
-                                    <tr class="even">
-                                        <td class="td-bg">Styles</td>
-                                        <td class="td-bg">Casual</td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td>Properties</td>
-                                        <td>Short Sleeve</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="review">
-                            <div class="row tab-review-row">
-                                <div class="col-xs-5 col-sm-4 col-md-4 col-lg-3 padding-5">
-                                    <div class="tab-rating-box">
-                                        <span>Grade</span>
-                                        <div class="rating-box">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-empty"></i>
-                                        </div>
-                                        <div class="review-author-info">
-                                            <strong>write A REVIEW</strong>
-                                            <span>06/22/2015</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-7 col-sm-8 col-md-8 col-lg-9 padding-5">
-                                    <div class="write-your-review">
-                                        <p><strong>write A REVIEW</strong></p>
-                                        <p>write A REVIEW</p>
-                                        <span class="usefull-comment">Was this comment useful to you? <span>Yes</span><span>No</span></span>
-                                        <a href="/frontend/#">Report abuse </a>
-                                    </div>
-                                </div>
-                                <a href="/frontend/#" class="write-review-btn">Write your review!</a>
+                                {!! $product->description !!}
                             </div>
                         </div>
                     </div>

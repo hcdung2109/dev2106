@@ -51,7 +51,7 @@
                                     <td>
                                         <img width="80" src="{{ asset($row->image) }}" alt="">
                                     </td>
-                                    <td>{{ $row->website }}</td>
+                                    <td>{{ $row->parent_id }}</td>
                                     <td>{{ $row->position }}</td>
                                     <td>{{ $row->is_active }}</td>
                                     <td>{{ $row->created_at }}</td>
