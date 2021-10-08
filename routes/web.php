@@ -15,6 +15,8 @@
 // Trang home của website
 Route::get('/', 'ShopController@index');
 
+Route::get('/tim-kiem', 'ShopController@search')->name('shop.search');
+
 Route::get('/danh-muc/{slug}', 'ShopController@category')->name('shop.category');
 
 Route::get('/chi-tiet-san-pham/{slug}', 'ShopController@product')->name('shop.product');
@@ -26,10 +28,10 @@ Route::post('/gui-lien-he', 'ShopController@postContact')->name('shop.postContac
 Route::get('/dat-hang', 'ShopController@order');
 
 // Danh sách tin tức
-Route::get('/tin-tuc' , 'ShopController@article');
+Route::get('/tin-tuc' , 'ShopController@articles');
 
 // Chi tiết tin tức
-Route::get('/chi-tiet-tin-tuc/{slug}','ShopController@detailArticle');
+Route::get('/chi-tiet-tin-tuc/{slug}','ShopController@detailArticle')->name('shop.detailArticle');
 
 // Đăng nhập
 Route::get('/admin/login', 'AdminController@login')->name('admin.login');

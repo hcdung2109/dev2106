@@ -44,6 +44,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //validate dữ liệu gửi từ form
+        $request->validate([
+            'name' => 'required|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000'
+        ],[
+            'name.required' => 'Nhập tên sản phẩm',
+            'image.image' => 'File ảnh phải có dạng jpeg,png,jpg,gif,svg',
+        ]);
+
         // lấy toàn bộ tham số gửi từ form
         $params = $request->all(); // $_POST , $_GET
 

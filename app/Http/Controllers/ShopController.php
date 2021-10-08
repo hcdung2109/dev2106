@@ -152,9 +152,11 @@ class ShopController extends Controller
     }
 
     // dANH SACH TIN Tức
-    public function article()
+    public function articles()
     {
-        return view('frontend.article');
+        $data = Article::where(['is_active' => 1])->get();
+
+        return view('frontend.article', ['data' => $data]);
     }
 
     // chi tiết tin tức
@@ -194,5 +196,20 @@ class ShopController extends Controller
 
         // chuyển về trang chủ
         return redirect('/');
+    }
+
+    public function search(Request $request)
+    {
+        $key = $request->input('tu-khoa');
+
+        $products = Product::where([
+                                ['name', 'like', '%' . $key . '%'],
+                                ['is_active', '=', 1]
+                            ])->paginate(20);
+
+
+        return view('frontend.search', [
+            'products' => $products
+        ]);
     }
 }
