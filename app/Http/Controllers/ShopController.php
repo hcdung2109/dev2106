@@ -134,8 +134,49 @@ class ShopController extends Controller
     {
         $product = Product::where(['slug' => $slug])->first();
 
+        // bước 1  : lưu lại thông tin sản phảm đã xem vào cookie
+        // lưu id sẩn phẩm đã xem lần đầu vào cookie
+        if (isset($_COOKIE['list_product_viewed'])) {
+            // xử lý lưu thêm vào danh sách tiếp theo
+            $list_products_viewed = $_COOKIE['list_product_viewed']; // list id sản phẩm , nhưng đag là 1 chuỗi
+            $list_products_viewed = json_decode($list_products_viewed); // chuyển chuỗi list id=> mảng
+
+            $list_products_viewed[] = $product->id;
+
+            // danh sách bị thay đổi => nạp lại giá trị cho key
+            $string_list_id = json_encode($list_products_viewed);
+            setcookie('list_product_viewed', $string_list_id , time() + (7*86400));
+
+        } else {
+            $arr_viewed_product = [$product->id];
+            $arr_viewed_product = json_encode($arr_viewed_product); // { "ten" : "gia tri"  }
+            setcookie('list_product_viewed', $arr_viewed_product , time() + (30*86400));
+        }
+
+        // bước 2:  lấy ra chi tiết thông tin những sản phẩm đã xem ,từ cookie
+        if (!empty($_COOKIE['list_product_viewed'])) {
+            $products_viewed =  $_COOKIE['list_product_viewed'];
+            $array_products_viewed = json_decode($products_viewed); // [48,48,56,46,89,10,12]
+
+            $array_products_viewed = array_unique($array_products_viewed); // [48,56,46,89,10,12]
+
+            $array_products_viewed = array_slice($array_products_viewed, -5, 5);
+
+
+            // lấy ra danh sách sách sản phẩm đã xem từ mảng : $list_products_viewed
+            $viewedProducts = Product::where([
+                                            ['is_active' , '=', 1],
+                                            ['id' ,'<>' , $product->id]
+                                        ])->whereIn('id' , $array_products_viewed)
+                                        ->get();
+
+        }
+
+
+
         return view('frontend.product',[
-            'product' => $product
+            'product' => $product,
+            'viewedProducts' => $viewedProducts
         ]);
     }
 

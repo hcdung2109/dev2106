@@ -535,36 +535,17 @@
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
         <!-- SINGLE SIDE BAR START -->
         <div class="single-product-right-sidebar">
-            <h2 class="left-title">Viewed products</h2>
+            <h2 class="left-title">Sản Phẩm Đã Xem</h2>
             <ul>
-                <li>
-                    <a href="/frontend/#"><img src="/frontend/img/product/sidebar_product/2.jpg" alt="" /></a>
-                    <div class="r-sidebar-pro-content">
-                        <h5><a href="/frontend/#">Faded Short ...</a></h5>
-                        <p>Faded short sleeves t-shirt with high...</p>
-                    </div>
-                </li>
-                <li>
-                    <a href="/frontend/#"><img src="/frontend/img/product/sidebar_product/4.jpg" alt="" /></a>
-                    <div class="r-sidebar-pro-content">
-                        <h5><a href="/frontend/#">Printed Chif ..</a></h5>
-                        <p>Printed chiffon knee length dress...</p>
-                    </div>
-                </li>
-                <li>
-                    <a href="/frontend/#"><img src="/frontend/img/product/sidebar_product/6.jpg" alt="" /></a>
-                    <div class="r-sidebar-pro-content">
-                        <h5><a href="/frontend/#">Printed Sum ...</a></h5>
-                        <p>Long printed dress with thin...</p>
-                    </div>
-                </li>
-                <li>
-                    <a href="/frontend/#"><img src="/frontend/img/product/sidebar_product/1.jpg" alt="" /></a>
-                    <div class="r-sidebar-pro-content">
-                        <h5><a href="/frontend/#">Printed Dress </a></h5>
-                        <p>100% cotton double printed dress....</p>
-                    </div>
-                </li>
+                @foreach($viewedProducts as $product)
+                    <li>
+                        <a href="{{ route('shop.product',['slug' => $product->slug]) }}"><img src="{{ asset($product->image) }}" alt="" width="100" style="border: 0px" /></a>
+                        <div class="r-sidebar-pro-content">
+                            <h5><a href="{{ route('shop.product',['slug' => $product->slug]) }}">{{ $product->name }}</a></h5>
+                            <p>{{ number_format($product->sale,0,",",".") }} ₫ </p>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <!-- SINGLE SIDE BAR END -->
